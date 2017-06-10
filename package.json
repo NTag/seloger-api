@@ -1,0 +1,25 @@
+{
+  "name": "seloger-api",
+  "version": "1.0.0",
+  "description": "Node module to search on seloger.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NTag/seloger-api.git"
+  },
+  "author": "Basile Bruneau <basilebruneau@gmail.com>",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/NTag/seloger-api/issues"
+  },
+  "homepage": "https://github.com/NTag/seloger-api#readme",
+  "dependencies": {
+    "martinez-polygon-clipping": "^0.2.0",
+    "osmosis": "^1.1.4",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
+  }
+}
