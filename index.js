@@ -94,12 +94,20 @@ sl.getBestLocations = function(places) {
   });
 };
 
-sl.getOffers = function(params) {
+sl.getOffers = (url) => {
   // list of announces (JSON) http://www.seloger.com/map,services,pushpins-info.json?idtt=1&naturebien=1&idtypebien=1%2C2&ci=750101%2C750102%2C750103%2C750104%2C750105%2C750106%2C750107&tri=a_px&pxmin=600&pxmax=900&nb_pieces=1%2C2&etagemin=3&LISTING-LISTpg=2&bd=ListToCarto_SL
 
   // info about a specific offer (html) http://www.seloger.com/map,services,announce-grid.htm?idtt=1&naturebien=1&idtypebien=1%2C2&ci=750101%2C750102%2C750103%2C750104%2C750105%2C750106%2C750107&tri=a_px&pxmin=600&pxmax=900&nb_pieces=1%2C2&etagemin=3&LISTING-LISTpg=2&lida=116554697&ref=map
 
   // JSON details about an offer http://www.seloger.com/map,services,announce-detail.json?idannonce=116554697
+
+  return rp(url).then(html => {
+    const mainJson = html.replace(/^([\s\S]+)var ava_data = ([^;]+);([\s\S]+)$/g, '$2').replace('logged: logged,', '');
+    const mainData = eval('(' + mainJson + ')');
+    const products = mainData.products.filter(p => p.idannonce && p.prix);
+
+    return products;
+  });
 };
 
 module.exports = sl;
