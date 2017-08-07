@@ -110,4 +110,8 @@ sl.getOffers = (url) => {
   });
 };
 
+sl.getOffer = (id) => {
+  return rp('http://www.seloger.com/detail,json,caracteristique_bien.json?idannonce=' + id);
+};
+
 module.exports = sl;
